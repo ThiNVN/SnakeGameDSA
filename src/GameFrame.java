@@ -1,3 +1,7 @@
+/* Nguyen Van Ngoc Thi & ITCSIU22251
+ Purpose: I implement this project to understand and apply the knowledge from IU-DSA course.
+*/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
