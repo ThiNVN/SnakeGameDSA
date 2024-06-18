@@ -44,9 +44,11 @@ public class GamePanel extends JPanel implements ActionListener {
 
         // Level 2 - Barriers
         Level level2 = new Level(2);
-        level2.addBarrier(new Point(300, 300));
-        level2.addBarrier(new Point(300, 325));
-        level2.addBarrier(new Point(300, 350));
+        for (int i = 1; i < 12; i++) {
+            level2.addBarrier(new Point(175, 125 + (i * 25)));
+            level2.addBarrier(new Point(425, 125 + (i * 25)));
+        }
+
         levels.add(level2);
 
         // Set the current level to the first level
@@ -192,7 +194,7 @@ public class GamePanel extends JPanel implements ActionListener {
             if((random.nextInt(100) <= 5) && !hasBuff) {  //There is 5% to spawn the buff
                 newBuff();
             }
-            if (applesEaten % 3 == 0 && currentLevel.levelNumber == 1) {
+            if (applesEaten % 10 == 0 && currentLevel.levelNumber == 1) {
                 nextLevel();
             }
 
