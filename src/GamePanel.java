@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setFocusable(true);
-        this.addKeyListener(new MyKeyAdapter());
+        this.addKeyListener(new MyKeyAdapter(this));
         setupLevels();
         startGame();
     }
@@ -289,34 +289,6 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    public class MyKeyAdapter extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e) {
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_LEFT:
-                    if (direction != 'R') {
-                        direction = 'L';
-                    }
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    if (direction != 'L') {
-                        direction = 'R';
-                    }
-                    break;
-                case KeyEvent.VK_UP:
-                    if (direction != 'D') {
-                        direction = 'U';
-                    }
-                    break;
-                case KeyEvent.VK_DOWN:
-                    if (direction != 'U') {
-                        direction = 'D';
-                    }
-                    break;
-            }
-        }
-    }
-
     public class Level {
         int levelNumber;
         List<Point> barriers;
@@ -328,6 +300,40 @@ public class GamePanel extends JPanel implements ActionListener {
 
         void addBarrier(Point point) {
             barriers.add(point);
+        }
+    }
+
+    public static class MyKeyAdapter extends KeyAdapter {
+        private final GamePanel gamePanel;
+
+        public MyKeyAdapter(GamePanel gamePanel) {
+            this.gamePanel = gamePanel;
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if (gamePanel.direction != 'R') {
+                        gamePanel.direction = 'L';
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (gamePanel.direction != 'L') {
+                        gamePanel.direction = 'R';
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                    if (gamePanel.direction != 'D') {
+                        gamePanel.direction = 'U';
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if (gamePanel.direction != 'U') {
+                        gamePanel.direction = 'D';
+                    }
+                    break;
+            }
         }
     }
 }

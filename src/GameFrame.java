@@ -5,7 +5,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 
 public class GameFrame extends JFrame {
     private Image img;
@@ -15,9 +14,9 @@ public class GameFrame extends JFrame {
 
     public GameFrame() {
         setTitle("Snake Game Menu");
-        setSize(600, 600); // Adjusted size for demonstration
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Center the frame on screen
+        setLocationRelativeTo(null);
 
         img = Toolkit.getDefaultToolkit().getImage("src/Resources/SnakeGame.png");
 
@@ -28,7 +27,7 @@ public class GameFrame extends JFrame {
                 g.drawImage(img, 0, 0, this);
             }
         };
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Use BoxLayout
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         Font titleFont = new Font("Pixeboy", Font.BOLD, 100);
         JLabel titleLabel = new JLabel("Snake Game");
@@ -39,13 +38,13 @@ public class GameFrame extends JFrame {
         titleLabel.setBorder(BorderFactory.createEmptyBorder(100, 0, 0, 0));
 
         panel.add(titleLabel);
-        panel.add(Box.createVerticalGlue()); // Add glue to push buttons to the top
+        panel.add(Box.createVerticalGlue());
 
         startButton = new JButton("Start");
         rulesButton = new JButton("Rules");
         quitButton = new JButton("Quit");
 
-        startButton.setAlignmentX(Component.CENTER_ALIGNMENT); // Center align buttons
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         rulesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         quitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -70,13 +69,13 @@ public class GameFrame extends JFrame {
             }
         });
 
-        panel.add(Box.createVerticalGlue()); // Add glue to push buttons to the top
+        panel.add(Box.createVerticalGlue());
         panel.add(startButton);
-        panel.add(Box.createVerticalStrut(50)); // Add spacing between buttons
+        panel.add(Box.createVerticalStrut(50));
         panel.add(rulesButton);
         panel.add(Box.createVerticalStrut(50));
         panel.add(quitButton);
-        panel.add(Box.createVerticalGlue()); // Add glue to push buttons to the bottom
+        panel.add(Box.createVerticalGlue());
 
         add(panel);
         setVisible(true);
@@ -90,7 +89,7 @@ public class GameFrame extends JFrame {
         gameFrame.pack();
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setVisible(true);
-        dispose(); // Close the menu frame after starting the game
+        dispose();
     }
 
     private void showRules() {
